@@ -11,7 +11,7 @@ function RecurringChargeForm() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log({ title, amount, startDate, endDate, frequency });
-    // You can save or process this data as needed.
+
   };
 
   const updateAmount = (evt) => {
@@ -22,6 +22,22 @@ function RecurringChargeForm() {
     setAmount(newValue);
   };
 
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  }
+
+  const handleStartDateChange = (evt) => {
+    setStartDate(evt.target.value)
+  }
+
+  const handleEndDateChange = (evt) => {
+    setEndDate(evt.target.value)
+  }
+
+  const handleFrequencyChange = (evt) => {
+    setFrequency(evt.target.value)
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="title">Title</label>
@@ -29,7 +45,7 @@ function RecurringChargeForm() {
         name="title"
         value={title}
         type="text"
-        onChange={(evt) => setTitle(evt.target.value)}
+        onChange={handleTitleChange} 
       />
       <label htmlFor="amount">Amount</label>
       <input
@@ -45,20 +61,20 @@ function RecurringChargeForm() {
         name="startDate"
         value={startDate}
         type="date"
-        onChange={(evt) => setStartDate(evt.target.value)}
+        onChange={handleStartDateChange}
       />
       <label htmlFor="endDate">End Date</label>
       <input
         name="endDate"
         value={endDate}
         type="date"
-        onChange={(evt) => setEndDate(evt.target.value)}
+        onChange={handleEndDateChange}
       />
       <label htmlFor="frequency">Frequency</label>
       <select
         name="frequency"
         value={frequency}
-        onChange={(evt) => setFrequency(evt.target.value)}
+        onChange={handleFrequencyChange}
       >
         <option value="monthly">Monthly</option>
         <option value="annually">Annually</option>

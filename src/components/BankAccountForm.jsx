@@ -35,8 +35,15 @@ function BankAccountForm() {
         <option value="Checking">Checking</option>
         <option value="Saving">Saving</option>
       </select>
-      <label htmlFor="amount">Amount</label>
-      <input name="amount" value={amount} type="number" step="0.01" min="0" onChange={updateAmount} />
+      <label 
+        htmlFor="amount">Amount</label>
+      <input 
+        name="amount" 
+        value={amount} 
+        type="number" 
+        step="0.01" 
+        min="0" 
+        onChange={updateAmount} />
       <button type="submit">Submit</button>
     </form>
   )

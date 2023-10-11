@@ -7,6 +7,7 @@ function App() {
 
   return (
     <>
+      <h1>Expenses are Expensive</h1>
       <h2>Bank Accounts</h2>
       <BankAccountForm/>
       <h2>Daily Expenses</h2>

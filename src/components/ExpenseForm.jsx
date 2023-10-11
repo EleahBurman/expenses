@@ -19,6 +19,7 @@ const updateAmount = (evt) => {
   }
   setAmount(newValue)
 }
+
   return (
     <form onSubmit= {handleSubmit}>
       <label htmlFor="title">Title</label>
@@ -37,10 +38,10 @@ const updateAmount = (evt) => {
         onChange={updateAmount}/>
       <label htmlFor="date">Date</label>
       <input 
-      name="date" 
-      value={date} 
-      type="date" 
-      onChange={(evt)=>setDate(evt.target.value)}/>
+        name="date" 
+        value={date} 
+        type="date" 
+        onChange={(evt)=>setDate(evt.target.value)}/>
       <button>Add</button>
     </form>
   )
