@@ -24,12 +24,14 @@ function RecurringChargeForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor="title">Title</label>
       <input
         name="title"
         value={title}
         type="text"
         onChange={(evt) => setTitle(evt.target.value)}
       />
+      <label htmlFor="amount">Amount</label>
       <input
         name="amount"
         value={amount}
@@ -52,6 +54,7 @@ function RecurringChargeForm() {
         type="date"
         onChange={(evt) => setEndDate(evt.target.value)}
       />
+      <label htmlFor="frequency">Frequency</label>
       <select
         name="frequency"
         value={frequency}
