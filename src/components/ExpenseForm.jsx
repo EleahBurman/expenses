@@ -1,15 +1,16 @@
 import { useState } from "react"
 import { getCurrentDate } from "../util"
+import propTypes from "prop-types";
 
 
-function ExpenseForm(){
+function ExpenseForm({onAdd}){
   const [title, setTitle]=useState("")
   const [amount, setAmount]=useState(0)
   const [date, setDate]=useState(getCurrentDate())
 
 const handleSubmit = (evt) => {
   evt.preventDefault()
-  console.log({title, amount, date})
+  onAdd({title, amount, date})
 }
 
 const updateAmount = (evt) => {
@@ -45,6 +46,10 @@ const updateAmount = (evt) => {
       <button>Add</button>
     </form>
   )
+}
+
+ExpenseForm.propTypes={
+  onAdd: propTypes.func
 }
 
 export default ExpenseForm

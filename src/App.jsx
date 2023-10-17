@@ -2,9 +2,11 @@ import ExpenseForm from "./components/ExpenseForm"
 import BankAccountForm from "./components/BankAccountForm"
 import RecurringChargeForm from "./components/RecurringChargeForm"
 import useBankAccounts from "./hooks/useBankAccounts"
+import useExpenses from "./hooks/useExpenses"
 
 function App() {
   const {addBankAccount, bankAccounts}=useBankAccounts()
+  const {addExpense, expenses}=useExpenses()
 
   return (
     <>
@@ -13,7 +15,8 @@ function App() {
       <BankAccountForm onAdd={addBankAccount}/>
       {JSON.stringify(bankAccounts)}
       <h2>Daily Expenses</h2>
-      <ExpenseForm/>
+      <ExpenseForm onAdd={addExpense}/>
+      {JSON.stringify(expenses)}
       <h2>Recurring Expenses</h2>
       <RecurringChargeForm/>
     </>

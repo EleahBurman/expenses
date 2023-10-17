@@ -5,6 +5,7 @@ export default function useBankAccounts(){
   const [bankAccounts, setBankAccounts]=useState([])
   //adding entry into an ordered list or array - helper function
   const addBankAccount= (bankAccountInfo)=>{
+    //function takes previous state of a variable
     setBankAccounts((prevBankAccounts)=>{
       return [
         ...prevBankAccounts,
