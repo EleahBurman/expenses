@@ -2,8 +2,7 @@ import { useState } from "react"
 import { getCurrentDate } from "../util"
 import propTypes from "prop-types";
 
-
-function ExpenseForm({onAdd}){
+function ExpenseForm({onAdd, bankAccounts}){
   const [title, setTitle]=useState("")
   const [amount, setAmount]=useState(0)
   const [date, setDate]=useState(getCurrentDate())
@@ -23,6 +22,12 @@ const updateAmount = (evt) => {
 
   return (
     <form onSubmit= {handleSubmit}>
+      <select required>
+        <option value="">Please Select</option>
+        {bankAccounts.map(({title})=>{
+          return <option key={title}>{title}</option>
+        })}
+      </select>
       <label htmlFor="title">Title</label>
       <input 
         name="title" 
@@ -49,7 +54,13 @@ const updateAmount = (evt) => {
 }
 
 ExpenseForm.propTypes={
-  onAdd: propTypes.func
+  onAdd: propTypes.func,
+  bankAccounts: propTypes.array
 }
 
 export default ExpenseForm
+
+//create a state variable
+//wrap the select inside them
+//submit on add
+//if you let user delete expense tied to bank account (cascade or not cascade .. how to make it instance versus when it has to cascade)
