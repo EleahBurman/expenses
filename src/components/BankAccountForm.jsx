@@ -1,13 +1,14 @@
 import { useState } from "react";
+import propTypes from "prop-types";
 
-function BankAccountForm() {
+function BankAccountForm({onAdd}) {
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [amount, setAmount] = useState(0);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log({ title, type, amount });
+    onAdd({ title, type, amount });
   }
 
   const updateAmount = (evt) => {
@@ -31,7 +32,8 @@ function BankAccountForm() {
       <label htmlFor="title">Title</label>
       <input name="title" value={title} type="text" onChange={handleTitleChange} />
       <label htmlFor="type">Type</label>
-      <select value={type} onChange={handleTypeChange}>
+      <select value={type} onChange={handleTypeChange} required>
+      <option value="">Please Select an Option</option>
         <option value="Checking">Checking</option>
         <option value="Saving">Saving</option>
       </select>
@@ -41,12 +43,16 @@ function BankAccountForm() {
         name="amount" 
         value={amount} 
         type="number" 
-        step="0.01" 
+        step="0.01"
         min="0" 
         onChange={updateAmount} />
       <button type="submit">Submit</button>
     </form>
   )
+}
+
+BankAccountForm.propTypes={
+  onAdd: propTypes.func
 }
 
 export default BankAccountForm;

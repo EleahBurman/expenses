@@ -27,11 +27,24 @@ function RecurringChargeForm() {
   }
 
   const handleStartDateChange = (evt) => {
-    setStartDate(evt.target.value)
+    const selectedStartDate = evt.target.value;
+    setStartDate(selectedStartDate)
   }
 
-  const handleEndDateChange = (evt) => {
-    setEndDate(evt.target.value)
+  const handleEndDateChange = (selectedStartDate) => (evt) => {
+    const selectedEndDate = evt.target.value;
+
+    const currentDate = getCurrentDate();
+
+    if (selectedEndDate < currentDate) {
+      alert("End Date cannot be earlier than the current date.");
+    } 
+    else if (selectedEndDate === selectedStartDate){
+      alert("Add daily expense. This is not a recurring charge.")
+    }
+    else {
+      setEndDate(selectedEndDate)
+    }
   }
 
   const handleFrequencyChange = (evt) => {
